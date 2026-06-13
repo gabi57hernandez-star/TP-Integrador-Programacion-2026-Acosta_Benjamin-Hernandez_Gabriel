@@ -2,11 +2,11 @@
 # FUNCIONES CARGA Y GUARDADO DE CSV
 # =============================================================================
 
-def cargar_paises(nombre_archivo):
+def cargar_paises(archivo_csv):
 
     paises= []
     try:
-        with open(nombre_archivo,"r",encoding="utf-8") as archivo:
+        with open(archivo_csv,"r",encoding="utf-8") as archivo:
         
             #Lector de archivo
             lector= csv.DictReader(archivo)
@@ -24,13 +24,13 @@ def cargar_paises(nombre_archivo):
 
 
 
-def guardar_paises(lista_paises, nombre_archivo):
+def guardar_paises(lista_paises, archivo_csv):
 
     # Definimos el orden exacto de las columnas en el CSV
     fieldnames = ["nombre", "poblacion", "superficie", "continente"]
 
     try:
-        with open(nombre_archivo, "w", encoding="utf-8", newline="") as archivo:
+        with open(archivo_csv, "w", encoding="utf-8", newline="") as archivo:
 
             # Escritor de diccionarios
             escritor = csv.DictWriter(archivo, fieldnames=fieldnames)
@@ -42,6 +42,6 @@ def guardar_paises(lista_paises, nombre_archivo):
             escritor.writerows(lista_paises)
             
     except PermissionError:
-        print(f"\n/ / / / / Error: No se pudo guardar '{nombre_archivo}'. Verificá que el archivo no esté abierto en otro programa. / / / / /")
+        print(f"\n/ / / / / Error: No se pudo guardar '{archivo_csv}'. Verificá que el archivo no esté abierto en otro programa. / / / / /")
     except Exception as e:
         print(f"\n/ / / / / Error inesperado al guardar: {e} / / / / /")
