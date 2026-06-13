@@ -15,7 +15,3 @@ def mostrar_paises(lista_paises):
     Si lista está vacía, muestra mensaje
     """
     pass
-
-
-def main():
-    pass
