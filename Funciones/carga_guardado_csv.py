@@ -1,6 +1,8 @@
 # ============================================================================
 # FUNCIONES CARGA Y GUARDADO DE CSV
 # =============================================================================
+#Se importa el modulo csv
+import csv
 
 def cargar_paises(archivo_csv):
 
