@@ -61,7 +61,7 @@ def actualizar_pais(lista_paises,archivo_csv):
     print("="*15)
 
     while True:
-        nombre=validar_texto("\n Ingrese el pais que desea actualizar")
+        nombre=validar_texto("\n Ingrese el pais que desea actualizar: ")
 
         encontrado=None
         for pais in lista_paises:
