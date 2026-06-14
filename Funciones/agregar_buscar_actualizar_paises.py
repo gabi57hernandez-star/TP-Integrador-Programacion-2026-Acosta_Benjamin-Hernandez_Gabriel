@@ -113,4 +113,4 @@ def buscar_pais(lista_paises):
     else:
         print(f"\n+ + + + + Se encontraron {len(resultados)} coincidencias: + + + + +")
         for pais in resultados:
-            print(f" - {pais['nombre']}: Población {pais['poblacion']}, Superficie {pais['superficie']} km², Continente {pais['continente']}")
+            print(f" - {pais['nombre']}: | Población: {pais['poblacion']} | Superficie: {pais['superficie']} km² | Continente: {pais['continente']} |")
