@@ -47,7 +47,6 @@ def filtrar_por_continente(lista_paises):
         if pais["continente"].title() == continente_buscado.title():
             resultados.append(pais)
     
-    
     #Mostrar resultados 
     print(f"\n{'='*50}")
     print(f"   PAÍSES ENCONTRADOS EN: {continente_buscado.upper()}")
@@ -81,7 +80,6 @@ def filtrar_por_poblacion(lista_paises):
         if pais["poblacion"] > poblacion_maxima_dataset:
             poblacion_maxima_dataset = pais["poblacion"]
     
-    
     #Pedir rango de población
     print("\n--- Filtro por rango de población ---")
     print(f"  (Rango existente en el dataset: {poblacion_minima_dataset:,} a {poblacion_maxima_dataset:,})")
@@ -99,19 +97,16 @@ def filtrar_por_poblacion(lista_paises):
     #lista vacía para resultados
     resultados = []
     
-    
     #Recorrer y filtrar
     for pais in lista_paises:
         if min_poblacion <= pais["poblacion"] <= max_poblacion:
             resultados.append(pais)
-    
     
     if len(resultados) == 0:
         print(f"\n/ / / / / No se encontraron países con población entre {min_poblacion:,} y {max_poblacion:,}. / / / / /")
         print(f"\n  Rango de población en el dataset: {poblacion_minima_dataset:,} a {poblacion_maxima_dataset:,}")
         print(f"  Intente con un rango dentro de esos valores.")
         return
-    
     
     #Mostrar resultados
     print(f"\n{'='*50}")
@@ -158,24 +153,19 @@ def filtrar_por_superficie(lista_paises):
         min_superficie = validar_numero("Ingrese superficie MÍNIMA (km²): ")
         max_superficie = validar_numero("Ingrese superficie MÁXIMA (km²): ")
     
-    
     #lista vacía para resultados
     resultados = []
-    
     
     #Recorrer y filtrar
     for pais in lista_paises:
         if min_superficie <= pais["superficie"] <= max_superficie:
             resultados.append(pais)
     
-    
-    
     if len(resultados) == 0:
         print(f"\n/ / / / / No se encontraron países con superficie entre {min_superficie:,} y {max_superficie:,} km². / / / / /")
         print(f"\n  Rango de superficie en el dataset: {superficie_minima_dataset:,} a {superficie_maxima_dataset:,} km²")
         print(f"  Intente con un rango dentro de esos valores.")
         return
-    
     
     #Mostrar resultados
     print(f"\n{'='*50}")
