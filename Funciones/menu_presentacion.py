@@ -5,8 +5,6 @@
 def mostrar_menu():
     """
     Muestra el menú principal de opciones en consola.
-    No recibe parámetros ni devuelve nada.
-    Solo imprime el menú formateado.
     """
     
     print("\n" + "=" * 50)
@@ -27,20 +25,16 @@ def mostrar_paises(lista_paises):
     """
     Muestra una tabla con todos los países de la lista recibida.
     Si la lista está vacía, muestra un mensaje de advertencia.
-    
-    Parámetro:
-        lista_paises: lista de diccionarios con los datos de los países
     """
-    
     # -------------------------------------------------------------------------
-    # PASO 0: Verificar que haya países para mostrar
+    # Se verifica que haya países para mostrar
     # -------------------------------------------------------------------------
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para mostrar. / / / / /")
         return  # Salimos de la función, no hay nada que mostrar
     
     # -------------------------------------------------------------------------
-    # PASO 1: Mostrar encabezado de la tabla
+    # Se muestra el encabezado de la tabla
     # -------------------------------------------------------------------------
     # Usamos caracteres especiales para dibujar líneas y separadores.
     # El :<15 alinea el texto a la izquierda con 15 espacios.
@@ -50,7 +44,7 @@ def mostrar_paises(lista_paises):
     print("=" * 80)
     
     # -------------------------------------------------------------------------
-    # PASO 2: Recorrer la lista y mostrar cada país
+    # Se recorre la lista y mostrar cada país
     # -------------------------------------------------------------------------
     for indice, pais in enumerate(lista_paises, start=1):
         # Formateamos cada columna con el ancho correcto.
@@ -58,7 +52,7 @@ def mostrar_paises(lista_paises):
         print(f" [{indice:<2}] │ {pais['nombre']:<15} │ {pais['poblacion']:>12,} │ {pais['superficie']:>12,} │ {pais['continente']:<12}")
     
     # -------------------------------------------------------------------------
-    # PASO 3: Mostrar pie de tabla con el total
+    # Se muestra pie de tabla con el total
     # -------------------------------------------------------------------------
     print("=" * 80)
     print(f" Total: {len(lista_paises)} país(es)")
