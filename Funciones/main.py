@@ -6,9 +6,9 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 """
 
-# =============================================================================
+
 # IMPORTS
-# =============================================================================
+
 # Solo importamos lo que realmente se usa en main.py
 
 # carga_guardado_csv: para leer y escribir el archivo CSV
@@ -29,32 +29,24 @@ from estadisticas import mostrar_estadisticas
 # menu_presentacion: funciones para mostrar menú y tabla
 from menu_presentacion import mostrar_menu, mostrar_paises
 
-# =============================================================================
+
 # CONSTANTE
-# =============================================================================
 # Nombre del archivo CSV donde se guardan los datos.
 # Está en la misma carpeta que el programa.
 ARCHIVO_CSV = "paises.csv"
 
-# =============================================================================
-# FUNCIÓN PRINCIPAL
-# =============================================================================
-def main():
 
-    # -------------------------------------------------------------------------
-    # Se cargan países desde el CSV al iniciar
-    # -------------------------------------------------------------------------
+# FUNCIÓN PRINCIPAL
+def main():
+    
     # Llamamos a cargar_paises(), pasándole el nombre del archivo.
     # Si el archivo no existe, devuelve lista vacía y muestra advertencia.
     lista_paises = cargar_paises(ARCHIVO_CSV)
     
     print(f"\n>>> Se cargaron {len(lista_paises)} país(es) desde '{ARCHIVO_CSV}'.")
     
-    # -------------------------------------------------------------------------
+    
     # Bucle principal del menú 
-    # -------------------------------------------------------------------------
-    # Este bucle se repite infinitamente hasta que el usuario elija 0 (Salir).
-    # En cada vuelta muestra el menú, espera la opción, y ejecuta la acción.
     while True:
         
         # Mostramos el menú con las opciones.
@@ -64,46 +56,36 @@ def main():
         # .strip() quita espacios accidentales al principio/final.
         opcion = input("\nSeleccione una opción: ").strip()
         
-        # ---------------------------------------------------------------------
-        # Validación de opción: debe ser un número entre 0 y 7
-        # ---------------------------------------------------------------------
-        # Verificamos si la opción está en la lista de opciones válidas.
-        # Usamos strings para no tener problemas con input() que siempre devuelve texto.
+        #Validación de opción: debe ser un número entre 0 y 7
+        #Verificamos si la opción está en la lista de opciones válidas.
         if opcion not in ["0", "1", "2", "3", "4", "5", "6", "7"]:
             print("\n/ / / / / Opción inválida. Debe ser un número entre 0 y 7. / / / / /")
-            continue  # Volvemos al inicio del while, mostramos el menú de nuevo
+            continue 
         
         # Convertimos "opcion" a entero para usar en los if/elif.
         opcion = int(opcion)
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 1: Agregar país
-        # ---------------------------------------------------------------------
+        #Agregar país
         if opcion == 1:
             # Llamamos a la función.
             # Le pasamos la lista y el nombre del archivo para que guarde automáticamente.
             agregar_pais(lista_paises, ARCHIVO_CSV)
             # Ya guarda dentro de su función, no necesitamos llamar guardar_paises() acá.
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 2: Actualizar país
-        # ---------------------------------------------------------------------
+        #Actualizar país
         elif opcion == 2:
             # Igual que agregar,guarda automáticamente.
             actualizar_pais(lista_paises, ARCHIVO_CSV)
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 3: Buscar país
-        # ---------------------------------------------------------------------
+       
+        #Buscar país
         elif opcion == 3:
-            # Solo busca, no modifica nada, no necesita guardar.
             buscar_pais(lista_paises)
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 4: Filtrar países
-        # ---------------------------------------------------------------------
+        
+        #Filtrar países
         elif opcion == 4:
-            # Submenú de filtrado: elige qué tipo de filtro quiere.
+            #elige qué tipo de filtro quiere.
             print("\n--- Filtrar por ---")
             print("  [1] Continente")
             print("  [2] Población")
@@ -120,11 +102,9 @@ def main():
             else:
                 print("\n/ / / / / Opción de filtrado inválida. / / / / /")
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 5: Ordenar países
-        # ---------------------------------------------------------------------
+        #Ordenar países
         elif opcion == 5:
-            # Submenú de ordenamiento: primero elige el criterio, luego el orden.
+            #primero elige el criterio, luego el orden.
             print("\n--- Ordenar por ---")
             print("  [1] Nombre")
             print("  [2] Población")
@@ -132,12 +112,11 @@ def main():
             
             sub_opcion = input("\nSeleccione una opción: ").strip()
             
-            # Validamos que sea 1, 2 o 3
+            # Validamos
             if sub_opcion not in ["1", "2", "3"]:
                 print("\n/ / / / / Opción de ordenamiento inválida. / / / / /")
-                continue  # Volvemos al menú principal
+                continue 
             
-            # Pedimos ascendente o descendente
             print("\n--- Orden ---")
             print("  [1] Ascendente (A-Z / Menor a Mayor)")
             print("  [2] Descendente (Z-A / Mayor a Menor)")
@@ -150,7 +129,7 @@ def main():
                 ascendente = False
             else:
                 print("\n/ / / / / Opción de orden inválida. / / / / /")
-                continue  # Volvemos al menú principal
+                continue  
             
             # Ejecutamos el ordenamiento según el criterio elegido
             if sub_opcion == "1":
@@ -160,31 +139,20 @@ def main():
             elif sub_opcion == "3":
                 ordenar_por_superficie(lista_paises, ascendente)
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 6: Mostrar estadísticas
-        # ---------------------------------------------------------------------
+        #Mostrar estadísticas
         elif opcion == 6:
             mostrar_estadisticas(lista_paises)
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 7: Mostrar todos los países
-        # ---------------------------------------------------------------------
+        #Mostrar todos los países
         elif opcion == 7:
             mostrar_paises(lista_paises)
         
-        # ---------------------------------------------------------------------
-        # OPCIÓN 0: Salir y guardar
-        # ---------------------------------------------------------------------
+        #Salir y guardar
         elif opcion == 0:
-            # Guardamos la lista actual en el CSV por si acaso.
-            # Aunque ya se guarda en agregar/actualizar, esto asegura que cualquier ordenamiento quede guardado si el usuario quiere.
             guardar_paises(lista_paises, ARCHIVO_CSV)
             print("\n+ + + + + Datos guardados. ¡Hasta luego! + + + + +")
-            break  # Rompe el while True y termina el programa
+            break 
 
-
-# =============================================================================
-# INICIO DEL PROGRAMA
-# =============================================================================
+#INICIO DEL PROGRAMA
 if __name__ == "__main__":
     main()
