@@ -238,11 +238,11 @@ Métodos de ordenamiento en Python: https://docs.python.org/3/howto/sorting.html
 
 
 #Enlaces del Proyecto
-Repositorio GitHub: [text](https://github.com/gabi57hernandez-star/TP-Integrador-Programacion-2026-Acosta_Benjamin-Hernandez_Gabriel)
+Repositorio_GitHub:(https://github.com/gabi57hernandez-star/TP-Integrador-Programacion-2026-Acosta_Benjamin-Hernandez_Gabriel)
 
-Video demostrativo: https://youtu.be/FyysPd7vm9M
+Video_demostrativo:https://youtu.be/FyysPd7vm9M
 
-Documentación-Drive:https://docs.google.com/document/d/1Bxk2nFN8A5A06Zcw0dF0BgP8xHkiNfcpA3b8U_gQapQ/edit?usp=sharing
+Documentación_Drive:https://docs.google.com/document/d/1Bxk2nFN8A5A06Zcw0dF0BgP8xHkiNfcpA3b8U_gQapQ/edit?usp=sharing
 
 #Notas de Entrega
 Trabajo en equipo: 2 integrantes:
