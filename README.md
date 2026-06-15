@@ -242,10 +242,11 @@ Repositorio GitHub: [text](https://github.com/gabi57hernandez-star/TP-Integrador
 
 Video demostrativo: https://youtu.be/FyysPd7vm9M
 
+Documentación-Drive:https://docs.google.com/document/d/1Bxk2nFN8A5A06Zcw0dF0BgP8xHkiNfcpA3b8U_gQapQ/edit?usp=sharing
 
 #Notas de Entrega
 Trabajo en equipo: 2 integrantes:
 Gabriel Hernández DNI:42.532.318
 Benjamin Acosta DNI:42.912.227 
 
-Formato: Archivo .zip con código fuente, documentación PDF y enlace al repositorio
+
