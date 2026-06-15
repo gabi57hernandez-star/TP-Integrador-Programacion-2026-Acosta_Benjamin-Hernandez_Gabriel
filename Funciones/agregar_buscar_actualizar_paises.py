@@ -4,8 +4,7 @@
 from carga_guardado_csv import guardar_paises
 from validaciones import validar_texto, validar_numero
 
-#/////////////////////////////////////////////////////////////////////////////////////////
-#\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 def agregar_pais(lista_paises, archivo_csv):
     print("="*20)
     print("AGREGAR PAÍS")
@@ -45,8 +44,7 @@ def agregar_pais(lista_paises, archivo_csv):
 
     print("\n+ + + + + País agregado correctamente. + + + + +")
 
-#/////////////////////////////////////////////////////////////////////////////////////////
-#\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 
 def actualizar_pais(lista_paises,archivo_csv):
 
@@ -90,8 +88,7 @@ def actualizar_pais(lista_paises,archivo_csv):
 
     print(f"\n+ + + + + País '{encontrado['nombre']}' actualizado correctamente. + + + + +")
 
-#/////////////////////////////////////////////////////////////////////////////////////////
-#\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 def buscar_pais(lista_paises):
 
     print("=" * 15)

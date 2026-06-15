@@ -4,7 +4,6 @@
 
 from validaciones import validar_texto, validar_numero
 
-
 def filtrar_por_continente(lista_paises):
     
     # Verificar que haya países cargados
@@ -12,7 +11,6 @@ def filtrar_por_continente(lista_paises):
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para filtrar. / / / / /")
         return
-    
     
     # Obtener los continentes que EXISTEN en el dataset
     # Creamos una lista con los continentes únicos (sin repetidos).
@@ -23,11 +21,8 @@ def filtrar_por_continente(lista_paises):
         if pais["continente"] not in continentes_existentes:
             continentes_existentes.append(pais["continente"])
     
-    
     # Pedir continente al usuario hasta que sea válido
-    
     while True:
-        
         
         continente_buscado = validar_texto("\nIngrese el continente a filtrar: ")
         
@@ -36,21 +31,17 @@ def filtrar_por_continente(lista_paises):
         if continente_buscado.title() in continentes_existentes:
             break  
         
-        
         print(f"\n/ / / / / '{continente_buscado}' no es un continente válido. / / / / /")
         print(f"\n  Continentes disponibles en el dataset:")
         for continente in continentes_existentes:
             print(f"     • {continente}")
         print(f"\n  Por favor, intente nuevamente.")
-      
     
     #lista vacía para los resultados
-    
     resultados = []
     
     
     #Recorrer y filtrar
-   
     for pais in lista_paises:
         # Comparamos con .title() para asegurar que coincidan.
         if pais["continente"].title() == continente_buscado.title():
@@ -58,7 +49,6 @@ def filtrar_por_continente(lista_paises):
     
     
     #Mostrar resultados 
-    
     print(f"\n{'='*50}")
     print(f"   PAÍSES ENCONTRADOS EN: {continente_buscado.upper()}")
     print(f"{'='*50}")
@@ -74,8 +64,8 @@ def filtrar_por_continente(lista_paises):
 
 
 def filtrar_por_poblacion(lista_paises):
+
     # Verificar que haya países cargados
-    
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para filtrar. / / / / /")
         return
@@ -93,7 +83,6 @@ def filtrar_por_poblacion(lista_paises):
     
     
     #Pedir rango de población
-    
     print("\n--- Filtro por rango de población ---")
     print(f"  (Rango existente en el dataset: {poblacion_minima_dataset:,} a {poblacion_maxima_dataset:,})")
     
@@ -108,12 +97,10 @@ def filtrar_por_poblacion(lista_paises):
     
     
     #lista vacía para resultados
-   
     resultados = []
     
     
     #Recorrer y filtrar
-    
     for pais in lista_paises:
         if min_poblacion <= pais["poblacion"] <= max_poblacion:
             resultados.append(pais)
@@ -127,7 +114,6 @@ def filtrar_por_poblacion(lista_paises):
     
     
     #Mostrar resultados
-    
     print(f"\n{'='*50}")
     print(f"   PAÍSES CON POBLACIÓN ENTRE {min_poblacion:,} Y {max_poblacion:,}")
     print(f"{'='*50}")
@@ -146,14 +132,11 @@ def filtrar_por_poblacion(lista_paises):
 def filtrar_por_superficie(lista_paises):
     
     #Verificar que haya países cargados
- 
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para filtrar. / / / / /")
         return
     
-    
     #Obtener rango real de superficie en el dataset
-    
     superficie_minima_dataset = lista_paises[0]["superficie"]
     superficie_maxima_dataset = lista_paises[0]["superficie"]
     
@@ -163,9 +146,7 @@ def filtrar_por_superficie(lista_paises):
         if pais["superficie"] > superficie_maxima_dataset:
             superficie_maxima_dataset = pais["superficie"]
     
-    
     #Pedir rango de superficie
-    
     print("\n--- Filtro por rango de superficie ---")
     print(f"  (Rango existente en el dataset: {superficie_minima_dataset:,} a {superficie_maxima_dataset:,} km²)")
     
@@ -179,12 +160,10 @@ def filtrar_por_superficie(lista_paises):
     
     
     #lista vacía para resultados
-    
     resultados = []
     
     
     #Recorrer y filtrar
-    
     for pais in lista_paises:
         if min_superficie <= pais["superficie"] <= max_superficie:
             resultados.append(pais)
@@ -199,7 +178,6 @@ def filtrar_por_superficie(lista_paises):
     
     
     #Mostrar resultados
-    
     print(f"\n{'='*50}")
     print(f"   PAÍSES CON SUPERFICIE ENTRE {min_superficie:,} Y {max_superficie:,} KM²")
     print(f"{'='*50}")
