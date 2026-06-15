@@ -4,7 +4,7 @@
 
 def mostrar_menu():
     """
-    Muestra el menú principal de opciones en consola.
+    Muestra el menú principal 
     """
     
     print("\n" + "=" * 50)
@@ -24,12 +24,11 @@ def mostrar_menu():
 def mostrar_paises(lista_paises):
     """
     Muestra una tabla con todos los países de la lista recibida.
-    Si la lista está vacía, muestra un mensaje de advertencia.
     """
     # Se verifica que haya países para mostrar
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para mostrar. / / / / /")
-        return  # Salimos de la función, no hay nada que mostrar
+        return  
     
     # Se muestra el encabezado de la tabla
     # Usamos caracteres especiales para dibujar líneas y separadores.
@@ -42,7 +41,6 @@ def mostrar_paises(lista_paises):
     # Se recorre la lista y mostrar cada país
     for indice, pais in enumerate(lista_paises, start=1):
         # Formateamos cada columna con el ancho correcto.
-        # :, agrega separadores de miles a los números.
         print(f" [{indice:<2}] │ {pais['nombre']:<15} │ {pais['poblacion']:>12,} │ {pais['superficie']:>12,} │ {pais['continente']:<12}")
     
     # Se muestra pie de tabla con el total
