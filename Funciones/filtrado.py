@@ -6,24 +6,15 @@ from validaciones import validar_texto, validar_numero
 
 
 def filtrar_por_continente(lista_paises):
-    """
-    Pide un continente al usuario, valida que exista en el dataset,
-    y muestra todos los países que pertenezcan a él.
     
-    Parámetro:
-        lista_paises: lista de diccionarios con los datos de los países
-    """
+    # Verificar que haya países cargados
     
-    # -------------------------------------------------------------------------
-    # PASO 0: Verificar que haya países cargados
-    # -------------------------------------------------------------------------
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para filtrar. / / / / /")
         return
     
-    # -------------------------------------------------------------------------
-    # PASO 1: Obtener los continentes que EXISTEN en el dataset
-    # -------------------------------------------------------------------------
+    
+    # Obtener los continentes que EXISTEN en el dataset
     # Creamos una lista con los continentes únicos (sin repetidos).
     # Recorremos todos los países y, si el continente no está en la lista,
     # lo agregamos.
@@ -32,45 +23,42 @@ def filtrar_por_continente(lista_paises):
         if pais["continente"] not in continentes_existentes:
             continentes_existentes.append(pais["continente"])
     
-    # -------------------------------------------------------------------------
-    # PASO 2: Pedir continente al usuario hasta que sea válido
-    # -------------------------------------------------------------------------
-    # Usamos un bucle while True que solo se rompe (break) cuando el usuario
-    # ingresa un continente que SÍ existe en el dataset.
+    
+    # Pedir continente al usuario hasta que sea válido
+    
     while True:
         
-        # Usamos validar_texto() para pedir el dato (no vacío, formato correcto).
+        
         continente_buscado = validar_texto("\nIngrese el continente a filtrar: ")
         
         # Verificamos si el continente ingresado está en la lista de existentes.
         # Usamos .title() para que "asia" y "Asia" sean iguales.
         if continente_buscado.title() in continentes_existentes:
-            break  #  Es válido. Salimos del while y seguimos con el filtrado.
+            break  
         
-        #  No es válido. Mostramos error y la lista de continentes disponibles.
+        
         print(f"\n/ / / / / '{continente_buscado}' no es un continente válido. / / / / /")
         print(f"\n  Continentes disponibles en el dataset:")
         for continente in continentes_existentes:
             print(f"     • {continente}")
         print(f"\n  Por favor, intente nuevamente.")
-        # El while True vuelve a empezar, pidiendo el continente de nuevo.
+      
     
-    # -------------------------------------------------------------------------
-    # PASO 3: Crear lista vacía para los resultados
-    # -------------------------------------------------------------------------
+    #lista vacía para los resultados
+    
     resultados = []
     
-    # -------------------------------------------------------------------------
-    # PASO 4: Recorrer y filtrar
-    # -------------------------------------------------------------------------
+    
+    #Recorrer y filtrar
+   
     for pais in lista_paises:
         # Comparamos con .title() para asegurar que coincidan.
         if pais["continente"].title() == continente_buscado.title():
             resultados.append(pais)
     
-    # -------------------------------------------------------------------------
-    # PASO 5: Mostrar resultados (ya sabemos que hay al menos 1)
-    # -------------------------------------------------------------------------
+    
+    #Mostrar resultados 
+    
     print(f"\n{'='*50}")
     print(f"   PAÍSES ENCONTRADOS EN: {continente_buscado.upper()}")
     print(f"{'='*50}")
@@ -86,25 +74,14 @@ def filtrar_por_continente(lista_paises):
 
 
 def filtrar_por_poblacion(lista_paises):
-    """
-    Pide un rango mínimo y máximo de población, valida que el rango sea lógico,
-    y muestra los países que estén dentro de ese rango (inclusive).
+    # Verificar que haya países cargados
     
-    Parámetro:
-        lista_paises: lista de diccionarios con los datos de los países
-    """
-    
-    # -------------------------------------------------------------------------
-    # PASO 0: Verificar que haya países cargados
-    # -------------------------------------------------------------------------
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para filtrar. / / / / /")
         return
     
-    # -------------------------------------------------------------------------
-    # PASO 1: Obtener rango real de población en el dataset (para mostrar al usuario)
-    # -------------------------------------------------------------------------
-    # Esto es opcional pero muy amigable: le decimos cuál es el rango existente.
+    #Obtener rango real de población en el dataset
+    #le decimos cuál es el rango existente.
     poblacion_minima_dataset = lista_paises[0]["poblacion"]
     poblacion_maxima_dataset = lista_paises[0]["poblacion"]
     
@@ -114,45 +91,43 @@ def filtrar_por_poblacion(lista_paises):
         if pais["poblacion"] > poblacion_maxima_dataset:
             poblacion_maxima_dataset = pais["poblacion"]
     
-    # -------------------------------------------------------------------------
-    # PASO 2: Pedir rango de población
-    # -------------------------------------------------------------------------
+    
+    #Pedir rango de población
+    
     print("\n--- Filtro por rango de población ---")
     print(f"  (Rango existente en el dataset: {poblacion_minima_dataset:,} a {poblacion_maxima_dataset:,})")
     
     min_poblacion = validar_numero("Ingrese población MÍNIMA: ")
     max_poblacion = validar_numero("Ingrese población MÁXIMA: ")
     
-    # Validamos que el mínimo no sea mayor que el máximo.
+
     while min_poblacion > max_poblacion:
         print("\n/ / / / / Error: El mínimo no puede ser mayor que el máximo. / / / / /")
         min_poblacion = validar_numero("Ingrese población MÍNIMA: ")
         max_poblacion = validar_numero("Ingrese población MÁXIMA: ")
     
-    # -------------------------------------------------------------------------
-    # PASO 3: Crear lista vacía para resultados
-    # -------------------------------------------------------------------------
+    
+    #lista vacía para resultados
+   
     resultados = []
     
-    # -------------------------------------------------------------------------
-    # PASO 4: Recorrer y filtrar
-    # -------------------------------------------------------------------------
+    
+    #Recorrer y filtrar
+    
     for pais in lista_paises:
         if min_poblacion <= pais["poblacion"] <= max_poblacion:
             resultados.append(pais)
     
-    # -------------------------------------------------------------------------
-    # PASO 5: Verificar si encontramos algo
-    # -------------------------------------------------------------------------
+    
     if len(resultados) == 0:
         print(f"\n/ / / / / No se encontraron países con población entre {min_poblacion:,} y {max_poblacion:,}. / / / / /")
         print(f"\n  Rango de población en el dataset: {poblacion_minima_dataset:,} a {poblacion_maxima_dataset:,}")
         print(f"  Intente con un rango dentro de esos valores.")
         return
     
-    # -------------------------------------------------------------------------
-    # PASO 6: Mostrar resultados
-    # -------------------------------------------------------------------------
+    
+    #Mostrar resultados
+    
     print(f"\n{'='*50}")
     print(f"   PAÍSES CON POBLACIÓN ENTRE {min_poblacion:,} Y {max_poblacion:,}")
     print(f"{'='*50}")
@@ -169,23 +144,16 @@ def filtrar_por_poblacion(lista_paises):
 
 
 def filtrar_por_superficie(lista_paises):
-    """
-    Pide un rango mínimo y máximo de superficie, valida que el rango sea lógico,
-    y muestra los países que estén dentro de ese rango (inclusive).
     
-    Es idéntica a filtrar_por_poblacion, pero cambia el campo del diccionario.
-    """
-    
-    # -------------------------------------------------------------------------
-    # PASO 0: Verificar que haya países cargados
-    # -------------------------------------------------------------------------
+    #Verificar que haya países cargados
+ 
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para filtrar. / / / / /")
         return
     
-    # -------------------------------------------------------------------------
-    # PASO 1: Obtener rango real de superficie en el dataset
-    # -------------------------------------------------------------------------
+    
+    #Obtener rango real de superficie en el dataset
+    
     superficie_minima_dataset = lista_paises[0]["superficie"]
     superficie_maxima_dataset = lista_paises[0]["superficie"]
     
@@ -195,9 +163,9 @@ def filtrar_por_superficie(lista_paises):
         if pais["superficie"] > superficie_maxima_dataset:
             superficie_maxima_dataset = pais["superficie"]
     
-    # -------------------------------------------------------------------------
-    # PASO 2: Pedir rango de superficie
-    # -------------------------------------------------------------------------
+    
+    #Pedir rango de superficie
+    
     print("\n--- Filtro por rango de superficie ---")
     print(f"  (Rango existente en el dataset: {superficie_minima_dataset:,} a {superficie_maxima_dataset:,} km²)")
     
@@ -209,30 +177,29 @@ def filtrar_por_superficie(lista_paises):
         min_superficie = validar_numero("Ingrese superficie MÍNIMA (km²): ")
         max_superficie = validar_numero("Ingrese superficie MÁXIMA (km²): ")
     
-    # -------------------------------------------------------------------------
-    # PASO 3: Crear lista vacía para resultados
-    # -------------------------------------------------------------------------
+    
+    #lista vacía para resultados
+    
     resultados = []
     
-    # -------------------------------------------------------------------------
-    # PASO 4: Recorrer y filtrar
-    # -------------------------------------------------------------------------
+    
+    #Recorrer y filtrar
+    
     for pais in lista_paises:
         if min_superficie <= pais["superficie"] <= max_superficie:
             resultados.append(pais)
     
-    # -------------------------------------------------------------------------
-    # PASO 5: Verificar si encontramos algo
-    # -------------------------------------------------------------------------
+    
+    
     if len(resultados) == 0:
         print(f"\n/ / / / / No se encontraron países con superficie entre {min_superficie:,} y {max_superficie:,} km². / / / / /")
         print(f"\n  Rango de superficie en el dataset: {superficie_minima_dataset:,} a {superficie_maxima_dataset:,} km²")
         print(f"  Intente con un rango dentro de esos valores.")
         return
     
-    # -------------------------------------------------------------------------
-    # PASO 6: Mostrar resultados
-    # -------------------------------------------------------------------------
+    
+    #Mostrar resultados
+    
     print(f"\n{'='*50}")
     print(f"   PAÍSES CON SUPERFICIE ENTRE {min_superficie:,} Y {max_superficie:,} KM²")
     print(f"{'='*50}")
