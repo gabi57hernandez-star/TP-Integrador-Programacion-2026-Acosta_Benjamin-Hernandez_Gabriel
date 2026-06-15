@@ -3,18 +3,12 @@
 # =============================================================================
 
 def mostrar_estadisticas(lista_paises):
-    
-
-    # -------------------------------------------------------------------------
     # Verificar que haya países para analizar
-    # -------------------------------------------------------------------------
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para mostrar estadísticas. / / / / /")
         return
 
-    # -------------------------------------------------------------------------
     # Inicializar variables de control
-    # -------------------------------------------------------------------------
     max_poblacion = -1
     pais_max = ""
 
@@ -27,9 +21,7 @@ def mostrar_estadisticas(lista_paises):
 
     continentes = {}
 
-    # -------------------------------------------------------------------------
     # Recorrer la lista UNA SOLA VEZ
-    # -------------------------------------------------------------------------
     for pais in lista_paises:
 
         if pais["poblacion"] > max_poblacion:
@@ -51,15 +43,11 @@ def mostrar_estadisticas(lista_paises):
         else:
             continentes[continente_actual] = 1
 
-    # -------------------------------------------------------------------------
     # Calcular promedios
-    # -------------------------------------------------------------------------
     promedio_poblacion = acum_poblacion / cantidad_paises
     promedio_superficie = acum_superficie / cantidad_paises
 
-    # -------------------------------------------------------------------------
     # Mostrar resultados formateados
-    # -------------------------------------------------------------------------
     print("\n" + "=" * 50)
     print("         E S T A D Í S T I C A S   G L O B A L E S")
     print("=" * 50)
@@ -78,4 +66,3 @@ def mostrar_estadisticas(lista_paises):
         print(f"     • {continente}: {cantidad} país(es)")
 
     print("\n" + "=" * 50)
- 
