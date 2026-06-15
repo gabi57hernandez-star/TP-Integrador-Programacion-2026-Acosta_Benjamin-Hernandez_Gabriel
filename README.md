@@ -240,7 +240,7 @@ Métodos de ordenamiento en Python: https://docs.python.org/3/howto/sorting.html
 #Enlaces del Proyecto
 Repositorio GitHub: [text](https://github.com/gabi57hernandez-star/TP-Integrador-Programacion-2026-Acosta_Benjamin-Hernandez_Gabriel)
 
-Video demostrativo: INGRESAR LINK
+Video demostrativo: https://youtu.be/FyysPd7vm9M
 
 
 #Notas de Entrega
@@ -249,4 +249,3 @@ Gabriel Hernández DNI:42.532.318
 Benjamin Acosta DNI:42.912.227 
 
 Formato: Archivo .zip con código fuente, documentación PDF y enlace al repositorio
-
