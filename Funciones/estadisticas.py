@@ -3,26 +3,17 @@
 # =============================================================================
 
 def mostrar_estadisticas(lista_paises):
-    """
-    Muestra estadísticas globales del dataset de países:
-    - País con mayor y menor población
-    - Promedio de población y superficie
-    - Cantidad de países por continente
-
-    Parámetro:
-        lista_paises: lista de diccionarios con claves 'nombre', 'poblacion',
-                      'superficie', 'continente'
-    """
+    
 
     # -------------------------------------------------------------------------
-    # PASO 0: Verificar que haya países para analizar
+    # Verificar que haya países para analizar
     # -------------------------------------------------------------------------
     if len(lista_paises) == 0:
         print("\n/ / / / / No hay países cargados para mostrar estadísticas. / / / / /")
         return
 
     # -------------------------------------------------------------------------
-    # PASO 1: Inicializar variables de control
+    # Inicializar variables de control
     # -------------------------------------------------------------------------
     max_poblacion = -1
     pais_max = ""
@@ -37,7 +28,7 @@ def mostrar_estadisticas(lista_paises):
     continentes = {}
 
     # -------------------------------------------------------------------------
-    # PASO 2: Recorrer la lista UNA SOLA VEZ
+    # Recorrer la lista UNA SOLA VEZ
     # -------------------------------------------------------------------------
     for pais in lista_paises:
 
@@ -61,13 +52,13 @@ def mostrar_estadisticas(lista_paises):
             continentes[continente_actual] = 1
 
     # -------------------------------------------------------------------------
-    # PASO 3: Calcular promedios
+    # Calcular promedios
     # -------------------------------------------------------------------------
     promedio_poblacion = acum_poblacion / cantidad_paises
     promedio_superficie = acum_superficie / cantidad_paises
 
     # -------------------------------------------------------------------------
-    # PASO 4: Mostrar resultados formateados
+    # Mostrar resultados formateados
     # -------------------------------------------------------------------------
     print("\n" + "=" * 50)
     print("         E S T A D Í S T I C A S   G L O B A L E S")
