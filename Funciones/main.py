@@ -17,16 +17,16 @@ from carga_guardado_csv import cargar_paises, guardar_paises
 # agregar_buscar_actualizar_paises: para modificar datos (agregar, actualizar, buscar)
 from agregar_buscar_actualizar_paises import agregar_pais, buscar_pais, actualizar_pais
 
-# filtrado: funciones de Benjamín para filtrar países
+# filtrado: funciones  para filtrar países
 from filtrado import filtrar_por_continente, filtrar_por_poblacion, filtrar_por_superficie
 
-# ordenamiento: funciones de Benjamín para ordenar países
+# ordenamiento: funciones para ordenar países
 from ordenamiento import ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie
 
-# estadisticas: función de Benjamín para mostrar estadísticas
+# estadisticas: función  para mostrar estadísticas
 from estadisticas import mostrar_estadisticas
 
-# menu_presentacion: funciones de Benjamín para mostrar menú y tabla
+# menu_presentacion: funciones para mostrar menú y tabla
 from menu_presentacion import mostrar_menu, mostrar_paises
 
 # =============================================================================
@@ -40,29 +40,24 @@ ARCHIVO_CSV = "paises.csv"
 # FUNCIÓN PRINCIPAL
 # =============================================================================
 def main():
-    """
-    Función principal del programa.
-    Controla el flujo completo: carga datos, muestra menú, ejecuta opciones,
-    guarda cambios y cierra el programa.
-    """
-    
+
     # -------------------------------------------------------------------------
-    # PASO 1: Cargar países desde el CSV al iniciar
+    # Se cargan países desde el CSV al iniciar
     # -------------------------------------------------------------------------
-    # Llamamos a cargar_paises() de Gabriel, pasándole el nombre del archivo.
+    # Llamamos a cargar_paises(), pasándole el nombre del archivo.
     # Si el archivo no existe, devuelve lista vacía y muestra advertencia.
     lista_paises = cargar_paises(ARCHIVO_CSV)
     
     print(f"\n>>> Se cargaron {len(lista_paises)} país(es) desde '{ARCHIVO_CSV}'.")
     
     # -------------------------------------------------------------------------
-    # PASO 2: Bucle principal del menú (while True)
+    # Bucle principal del menú 
     # -------------------------------------------------------------------------
     # Este bucle se repite infinitamente hasta que el usuario elija 0 (Salir).
     # En cada vuelta muestra el menú, espera la opción, y ejecuta la acción.
     while True:
         
-        # Mostramos el menú con las opciones (función de Benjamín).
+        # Mostramos el menú con las opciones.
         mostrar_menu()
         
         # Pedimos la opción al usuario.
@@ -78,23 +73,23 @@ def main():
             print("\n/ / / / / Opción inválida. Debe ser un número entre 0 y 7. / / / / /")
             continue  # Volvemos al inicio del while, mostramos el menú de nuevo
         
-        # Convertimos a entero para usar en los if/elif.
+        # Convertimos "opcion" a entero para usar en los if/elif.
         opcion = int(opcion)
         
         # ---------------------------------------------------------------------
         # OPCIÓN 1: Agregar país
         # ---------------------------------------------------------------------
         if opcion == 1:
-            # Llamamos a la función de Gabriel.
+            # Llamamos a la función.
             # Le pasamos la lista y el nombre del archivo para que guarde automáticamente.
             agregar_pais(lista_paises, ARCHIVO_CSV)
-            # Gabriel ya guarda dentro de su función, no necesitamos llamar guardar_paises() acá.
+            # Ya guarda dentro de su función, no necesitamos llamar guardar_paises() acá.
         
         # ---------------------------------------------------------------------
         # OPCIÓN 2: Actualizar país
         # ---------------------------------------------------------------------
         elif opcion == 2:
-            # Igual que agregar, Gabriel maneja todo y guarda automáticamente.
+            # Igual que agregar,guarda automáticamente.
             actualizar_pais(lista_paises, ARCHIVO_CSV)
         
         # ---------------------------------------------------------------------
@@ -182,8 +177,7 @@ def main():
         # ---------------------------------------------------------------------
         elif opcion == 0:
             # Guardamos la lista actual en el CSV por si acaso.
-            # Aunque Gabriel ya guarda en agregar/actualizar, esto asegura que
-            # cualquier ordenamiento quede guardado si el usuario quiere.
+            # Aunque ya se guarda en agregar/actualizar, esto asegura que cualquier ordenamiento quede guardado si el usuario quiere.
             guardar_paises(lista_paises, ARCHIVO_CSV)
             print("\n+ + + + + Datos guardados. ¡Hasta luego! + + + + +")
             break  # Rompe el while True y termina el programa
@@ -192,7 +186,5 @@ def main():
 # =============================================================================
 # INICIO DEL PROGRAMA
 # =============================================================================
-# Esta línea es estándar en Python. Significa:
-# "Si este archivo se ejecuta directamente (no se importa), llamá a main()"
 if __name__ == "__main__":
     main()
